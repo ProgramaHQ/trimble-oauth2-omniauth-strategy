@@ -41,17 +41,16 @@ module OmniAuth
         options[:redirect_uri] || (full_host + callback_path)
       end
 
-Vj
-        if id_token.nil?
-          @raw_info = {
-            given_name: '',
-            family_name: '',
-            email: ''
-          }
-        else
-          decoded_info = JWT.decode(id_token, nil, false)
-          @raw_info ||= decoded_info[0]
-        end
+      def raw_info
+        @raw_info ||= if id_token.nil?
+                        {
+                          'given_name' => '',
+                          'family_name' => '',
+                          'email' => ''
+                        }
+                      else
+                        JWT.decode(id_token, nil, false)[0]
+                      end
       end
 
       def authorize_params
