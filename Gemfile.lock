@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     omniauth-trimble-oauth2 (0.1.0)
-      jwt (~> 2.0)
+      jwt (>= 2.0, < 4.0)
       omniauth-oauth2 (~> 1.7.1)
 
 GEM
